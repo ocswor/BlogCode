@@ -4,15 +4,15 @@
 
 # Site
 title: 红尘客栈
-subtitle:
-description:
+subtitle: 风云再起
+description: 江湖事,江湖了
 author: 扆佳梁
-language:
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://code.dreamqq.cn
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yilia
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -81,21 +81,8 @@ deploy:
   repo: git@github.com:ocswor/ocswor.github.io.git
   branch: master
 
-jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: false
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
