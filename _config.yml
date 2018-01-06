@@ -15,7 +15,7 @@ timezone:
 url: http://code.dreamqq.cn
 root: /
 permalink: :year/:month/:day/:title/
-permalink_defaults:
+permalink_defaults: http://code.dreamqq.cn
 
 # Directory
 source_dir: source

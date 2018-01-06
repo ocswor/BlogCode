@@ -1,10 +1,13 @@
 ---
+permalink: sidebar-tall-toc-test-post
 title: Hexo 安装部署记录
 date: 2018-01-03 18:46:14
 tags: Hexo 
 category: 脚本-测试-工具
 keywords: 搭建博客,Hexo
 meta: hexo 博客搭建
+url: http://dreamqq.cn/:year/:month/:day/sidebar-tall-toc-test-post
+author: 扆佳梁
 ---
 
 # Hexo
@@ -55,6 +58,18 @@ hexo new page "about"
   title: All categories
   date: 2014-12-22 12:39:04
   type: "categories"
+```
+### 私密文章
+``` code
+$ hexo new draft "new draft"
+```
+会在source/_drafts目录下生成new draft.md文件,这个文件不会被显示在页面,链接也访问不到.
+
+如果你希望强行预览草稿，更改配置文件：`render_drafts: true`
+
+或者，如下方式启动server：
+```code
+$ hexo server --drafts
 ```
 
 

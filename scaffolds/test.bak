@@ -4,5 +4,8 @@ date: {{ date }}
 tags:
 categories:  #目录分类
 keywords:  #文章关键词，多个关键词用英文逗号隔开
-meta: ios,python
+meta: iOS,Python
+#description: #描述
+#author: 扆佳梁
+#url: http://dreamqq.cn/{{ :year }}/{{ title }}
 ---
