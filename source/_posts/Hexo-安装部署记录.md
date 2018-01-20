@@ -59,6 +59,12 @@ hexo new page "about"
   date: 2014-12-22 12:39:04
   type: "categories"
 ```
+可以使用 http://ip/about/ 直接访问
+### 写普通文章
+``` code
+hexo new "文章标题"
+```
+区别上面的创建 new page 
 ### 私密文章
 ``` code
 $ hexo new draft "new draft"
