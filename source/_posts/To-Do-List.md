@@ -16,7 +16,7 @@ keywords: 技能
 * 还可以提炼整理出一些AFNetworking处理网络请求的工具类和小技巧.
 + 测试
 
-#### 2、Python CookBook 春节冲刺计划
+##### 2、Python CookBook 春节冲刺计划
 使用Python 两年多了,但是一直都在Django Flask Tornado 各种框架下开发,由于项目使用的局限性,很少对Python基础进行回顾.
 * 看了下Python CookBook 总共有15章,每章有15-20个左右的小知识点,
 *  从这周起算了,立个Flag Python CookBook 春节冲刺计划正式启动.代码会同步在github上.
@@ -24,5 +24,9 @@ keywords: 技能
 [参考代码2](https://github.com/yidao620c/python3-cookbook)
 [参考代码3](https://github.com/dabeaz/python-cookbook)
 github真是好,无愧为面向github编程之名,感谢各位大大的开源.2018年02月01日09:50:26 ---2018年02月28日09:50:32
+
+##### 3、Redis 的用法,对Reids有一个全面的认识.
+具体的例子还没有,还需要在了解的过程,列举相关例子进行深化认识.
+[参考](https://mp.weixin.qq.com/s/mZMHwV2sbKToh7SLVljeVg)
 
 
