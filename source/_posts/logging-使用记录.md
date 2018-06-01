@@ -79,7 +79,8 @@ sys.stdout或者文件，默认输出到sys.stderr，当stream和filename同时�
 ```
 ##### 关于 Looger的 树形层级结构
 >创建Logger对象。日志记录的工作主要由Logger对象来完成。在调用getLogger时要提供Logger的名称（注：多次使用相同名称 来调用getLogger，返回的是同一个对象的引用。），Logger实例之间有层次关系，这些关系通过Logger名称来体现，如：
-
+>用户使用logging.getLogger([name])获取logger实例。 
+如果没有名字，返回logger层级中的根logger（root logger）。以相同名字调用该函数总是返回同一个logger实例。这意味着logger实例不需要在应用的各个部分之间传来传去。
 ```code
 p = logging.getLogger("root")
 c1 = logging.getLogger("root.c1")
