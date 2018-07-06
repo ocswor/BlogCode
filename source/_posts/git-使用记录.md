@@ -13,11 +13,11 @@ keywords: git rebase amend
 推荐几个参考的链接：
 
 关于rebase 和 merage 的区别可以重点看下面第一个链接的这篇文章
-总结下就是：rebase 代替合并 
+总结下就是：rebase 代替合并
 ```code
 $ git rebase branch-B
 ```
-表示  将 分支B合并到当前分支 
+表示  将 分支B合并到当前分支
 使用rebase 他们希望项目拥有一个单一的历史发展轨迹。比如一条直线。在历史纪录上**没有迹象表明在某些时间它被分成过多个分支。**
 
 [这个图文并茂 rebase](https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/rebase)
@@ -34,7 +34,7 @@ $ git rebase branch-B
 (一般来说一个commit 一个更新内容。可以有多个commit)
 
 ##### 第一种情况 假如修改了当前的文件，还没有commit，
-可以使用 
+可以使用
 ```code
 git commit --amend
 ```
@@ -51,7 +51,7 @@ git commit --amend
 git rebase -i head～2
 ```
 表示准备将近2个commit合并
-修改pick 为 squash 
+修改pick 为 squash
 前一个就是上一个的意思。所以修改pick从下到上修改。
 
 ```
@@ -94,4 +94,15 @@ push again
 提交到refs/for/{xx}分支，然后通过gerrit进行review之后merge, {xx}为对应的分支名称，例如：
 ```code
 git push origin HEAD:refs/for/master
+```
+#### 版本回退
+当本地已经提交了commit，想要撤销这个commit.
+```
+git reset --hard HEAD^
+```
+
+#### 多人开发提交之前
+```
+git pull --rebase
+防止 别人提交了，冲突
 ```

@@ -17,6 +17,40 @@ keywords: MongoDB
    MongoDB支持存在时间有限的集合,适用于那些将在某个时刻过期的数据,如会话(session)。类似地,MongoDB也支持固定大小的集合,用于保存近期数据,如日志。
 
 
+# MongoDB 的安装
+[文档链接](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
+
+修改支持安全认证：
+```
+sudo vi /etc/mongodb.conf
+```
+```
+security:
+  authorization: enabled
+```
+### 创建用户
+```
+db.createUser(
+  {
+    user: "algorithm",
+    pwd: "cH7jufath5_a",
+    roles: [ { role: "readWrite", db: "cr_data" }]
+  }
+)
+```
+```
+db.createUser(
+  {
+    user: "adminUser",
+    pwd: "adminPass",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+```
+### Mongo shell 使用说明
+[Management and Authentication API](https://docs.mongodb.com/manual/reference/security/)
+
+
 # 查缺补漏
   ### 操作符 $or
 
@@ -93,3 +127,9 @@ db.inventory.find( {
 
   ### explain
   可以使用explain() 函数查看MongoDB在执行查询的过程中所做的事情。
+
+  ### 线上数据库创建索引 在后台创建，避免锁表
+  ```
+  db.t1.createIndex({idCardNum:1},{background:1})
+  ```
+  (线上数据库使用规范)[http://blog.51cto.com/hcymysql/2061451]

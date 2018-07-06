@@ -22,12 +22,12 @@ wc -l test.txt  统计一个文件有多少行
 wc -w test.txt  统计字数
 ```
 wc 经常和 cat ls命令一起使用
-```code 
+```code
 cat file | grep 'Error' wc -l  统计包含Error字符的 有多少行
 ls -l | wc -l 统计这个目录下有多少文件
 ```
 # du 命令
-du命令也是查看使用空间的，但是与df命令不同的是Linux du命令是对文件和目录磁盘使用的空间的查看，还是和df命令有一些区别的。 
+du命令也是查看使用空间的，但是与df命令不同的是Linux du命令是对文件和目录磁盘使用的空间的查看，还是和df命令有一些区别的。
 [参考](http://man.linuxde.net/du)
 ```code
 -a或-all 显示目录中个别文件的大小。
@@ -82,3 +82,10 @@ ln -s test test2 表示为test 创建一个test2的软连接
 ```
 1.test test2 在内存中指向同一块空间，修改一个内容，另一个也会改变。
 2.当test 源文件被删除以后，test2也就失效了，硬连接则不会。
+
+
+# Shell中判断语句if中-z至-d的意思
+[shell if 语句](https://www.cnblogs.com/coffy/p/5748292.html)
+```
+[-z string] “string”的长度为零则为真
+```
