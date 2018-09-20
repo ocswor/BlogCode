@@ -106,3 +106,17 @@ git reset --hard HEAD^
 git pull --rebase
 防止 别人提交了，冲突
 ```
+
+#### 设置当前分支跟踪远程分支
+```
+git branch -u remotes/origin/master
+
+具体查看 git branch -help
+```
+
+### tag 相关操作
+```
+git tag
+git tag v0.2.0
+git push --tags origin
+```

@@ -133,3 +133,18 @@ db.inventory.find( {
   db.t1.createIndex({idCardNum:1},{background:1})
   ```
   (线上数据库使用规范)[http://blog.51cto.com/hcymysql/2061451]
+
+
+
+  #map_reduce 使用
+  ```
+map_func = Code("function () {this.tags.forEach(function(z) {emit(z, 1);});}")
+
+reduce_func = Code("function (key, values) {"
+                    "  var total = 0;"
+                    "  for (var i = 0; i < values.length; i++) {"
+                    "    total += values[i];"
+                    "  }"
+                    "  return total;"
+                    "}")
+  ```

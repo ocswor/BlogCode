@@ -47,7 +47,7 @@ du命令也是查看使用空间的，但是与df命令不同的是Linux du命�
 -l或--count-links 重复计算硬件链接的文件。
 ```
 实例：
-* du -kh Demo/  查看Demo目录下所有文件的大小，以kb为单位， 并且显示k 提高可读性
+### du -kh Demo/  查看Demo目录下所有文件的大小，以kb为单位， 并且显示k 提高可读性
 ```code
 8.0K	Demo/algorithm-monitor/.git/logs/refs/heads
 24K	Demo/algorithm-monitor/.git/logs/refs
@@ -64,10 +64,23 @@ du命令也是查看使用空间的，但是与df命令不同的是Linux du命�
 
 ```
 
-* du -sh
+### du -sh
 ```code
 yijialiang@yijialiang:~$ du -skh Demo/
 316K	Demo/
+
+```
+### df -h 查看硬盘的使用情况df
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            2.0G     0  2.0G   0% /dev
+tmpfs           396M   11M  385M   3% /run
+/dev/sda1       489G  8.0G  456G   2% /
+tmpfs           2.0G     0  2.0G   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           2.0G     0  2.0G   0% /sys/fs/cgroup
+tmpfs           396M     0  396M   0% /run/user/1004
+tmpfs           396M     0  396M   0% /run/user/1001
 ```
 # ln cp 命令
 ln 源文件路径 链接目标路径
@@ -88,4 +101,58 @@ ln -s test test2 表示为test 创建一个test2的软连接
 [shell if 语句](https://www.cnblogs.com/coffy/p/5748292.html)
 ```
 [-z string] “string”的长度为零则为真
+```
+
+# 判断文件夹 文件是否存在相关shell
+```
+#shell判断文件夹是否存在
+
+#如果文件夹不存在，创建文件夹
+if [ ! -d "/myfolder" ]; then
+  mkdir /myfolder
+fi
+
+#shell判断文件,目录是否存在或者具有权限
+
+
+folder="/var/www/"
+file="/var/www/log"
+
+# -x 参数判断 $folder 是否存在并且是否具有可执行权限
+if [ ! -x "$folder"]; then
+  mkdir "$folder"
+fi
+
+# -d 参数判断 $folder 是否存在
+if [ ! -d "$folder"]; then
+  mkdir "$folder"
+fi
+
+# -f 参数判断 $file 是否存在
+if [ ! -f "$file" ]; then
+  touch "$file"
+fi
+
+# -n 判断一个变量是否有值
+if [ ! -n "$var" ]; then
+  echo "$var is empty"
+  exit 0
+fi
+
+# 判断两个变量是否相等
+if [ "$var1" = "$var2" ]; then
+  echo '$var1 eq $var2'
+else
+  echo '$var1 not eq $var2'
+fi
+```
+
+命令行发送 tcp 数据
+```
+2.往666端口发送数据几种方式：
+
+
+echo "heh" |nc 192.168.90.203 6666
+nc 192.168.90.203 6666 </etc/resolv.conf
+echo hehe >/dev/tcp/192.168.90.203/6666
 ```

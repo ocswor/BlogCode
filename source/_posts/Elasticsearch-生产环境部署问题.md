@@ -199,3 +199,57 @@ output {
   }
   es.index( index='test_index', doc_type="log", body=body )
   ```
+
+
+  # 为Logstash 增加反向代理
+
+  增加反向代理以后， 获取的host 就是127.0.0.1
+  就需要在Haproxy 中 配置，将原始ip传递过来，可参考我的另一篇Haproxy-supervisor-反向代理
+
+  然后需要在mutate中，将host的值改变，因为传递的ip放在header中。
+  ```
+  filter{
+   mutate{
+        replace => {"host"=> "%{[headers][http_x_client]}"}
+   }
+   mutate{remove_field => "headers"}
+}
+  ```
+
+
+# 新建索引
+
+```
+output {
+
+   elasticsearch {
+        hosts => ["127.0.0.1"]
+        manage_template => true
+        template_overwrite => true
+	index => "log-pdfservice-%{+YYYY.MM.dd}"
+	user => "elastic"
+	password => "m7YH8L9eNA7WpFhoD688"
+    }
+   stdout{
+        codec => rubydebug
+    }
+ }
+```
+
+# 部署 elasticsearch 集群 配置注意修改：
+```
+cluster.name: alg-elk-dev
+node.name: node-120
+path.data: /var/lib/elasticsearch
+path.logs: /var/algorithm/logs/elasticsearch
+discovery.zen.ping.unicast.hosts: ["10.11.255.124"]
+
+```
+
+```
+xpack.security.enabled: true
+xpack.security.audit.enabled: true
+xpack.security.transport.filter.allow: ["10.1.1.211"]
+```
+
+[X-Pack 安全密码设置](https://www.elastic.co/guide/en/elastic-stack-overview/current/get-started-built-in-users.html)

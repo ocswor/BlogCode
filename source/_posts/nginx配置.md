@@ -17,7 +17,7 @@ keywords:
    则需要nginx在本地监听一个端口做转发，正常的请求转发给 django 关于图片请求转发给后台的服务器。
 
   具体配置如下：
-  
+
   ```code
    server {
 	listen 8000;
@@ -51,3 +51,31 @@ keywords:
   ```
   8001就是本地 django 服务器的端口。
   8500就是远程图片存储的位置。
+
+# tcp 配置
+
+```
+--add-module=/app/nginx_tcp_proxy_module-master
+```
+nginx 默认不支持tcp 反向代理，需要编译这个模块
+
+  ```
+  tcp {
+
+    upstream server {
+        server 127.0.0.1:9013;
+        server 127.0.0.1:9014;
+
+        #check interval 健康检查时间间隔，单位为毫秒
+        #rise 检查几次正常后，将server加入以负载列表中
+        #fall 检查几次失败后，从负载队列移除server
+        #timeout 检查超时时间，单位为毫秒
+        check interval=3000 rise=2 fall=5 timeout=1000;
+    }
+
+    server {
+        listen 9012;
+        proxy_pass server;
+    }
+}
+  ```

@@ -236,4 +236,36 @@ http://localhost:9200/_cat/indices?v
      }
   }
   ```
+
+多个字段组成的查询
+  ```
+  GET pdfextract-2018.08.06/_search
+{
+  "query": {
+    "match": {
+      "level": "INFO"
+    }
+  }
+}
+
+GET pdfextract-2018.08.06/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "level": "INFO"
+          }
+        },
+        {
+          "match": {
+            "host": "alg-service117"
+          }
+        }
+      ]
+    }
+  }
+}
+  ```
   [关于高亮的详细定制参考](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/search-request-highlighting.html)
