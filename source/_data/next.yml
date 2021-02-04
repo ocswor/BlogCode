@@ -371,7 +371,7 @@ disqus:
 
 # changyan
 changyan:
-  enable: ture
+  enable: false
   appid: cytoTcINM
   appkey: 34098ada83626a41061e47698571e1b4
 
